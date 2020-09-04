@@ -80,7 +80,7 @@ class ZhihuActivity : AppCompatActivity() {
                         .capture(true)
                         .maxSelectable(9)
                         .countable(true)
-                        .spanCount(4)
+                        .spanCount(3)
                         .theme(R.style.Zhihu_Normal)
                         .build())
                 .subscribe(fetchUriObserver())

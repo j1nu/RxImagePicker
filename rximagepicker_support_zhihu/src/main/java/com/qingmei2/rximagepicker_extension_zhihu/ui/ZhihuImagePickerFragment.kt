@@ -75,6 +75,7 @@ class ZhihuImagePickerFragment : androidx.fragment.app.Fragment(), IGalleryCusto
 
         mSelectedCollection.onCreate(savedInstanceState)
         if (savedInstanceState != null) {
+            println("설마 너가 null이 아니니???")
             instanceGridFragmentAndInject(null)
         }
 
@@ -199,6 +200,7 @@ class ZhihuImagePickerFragment : androidx.fragment.app.Fragment(), IGalleryCusto
     private fun instanceGridFragmentAndInject(album: Album?) {
         println("새 앨범 instance 생성!!!!")
         val tag = ZhihuImageListGridFragment::class.java.simpleName
+        println("tag = $tag")
         if (album != null) {
             println("test")
             println(album)

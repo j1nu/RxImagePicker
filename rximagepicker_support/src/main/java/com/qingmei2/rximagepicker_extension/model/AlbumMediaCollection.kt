@@ -19,6 +19,7 @@ package com.qingmei2.rximagepicker_extension.model
 import android.content.Context
 import android.database.Cursor
 import android.os.Bundle
+import androidx.loader.app.LoaderManager
 import androidx.loader.content.Loader
 import com.qingmei2.rximagepicker_extension.entity.Album
 import com.qingmei2.rximagepicker_extension.loader.AlbumMediaLoader
@@ -51,7 +52,8 @@ class AlbumMediaCollection : androidx.loader.app.LoaderManager.LoaderCallbacks<C
 
     fun onCreate(context: androidx.fragment.app.FragmentActivity, callbacks: AlbumMediaCallbacks) {
         mContext = WeakReference(context)
-        mLoaderManager = context.supportLoaderManager
+        mLoaderManager = LoaderManager.getInstance(context)
+//        mLoaderManager = context.supportLoaderManager
         mCallbacks = callbacks
     }
 

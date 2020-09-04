@@ -76,7 +76,7 @@ abstract class RecyclerViewCursorAdapter<VH : RecyclerView.ViewHolder> internal 
 
     fun swapCursor(newCursor: Cursor?) {
         println("swapcurosr")
-        println("$newCursor -> $cursor")
+        println("$cursor -> $newCursor")
         if (newCursor === cursor) {
             return
         }

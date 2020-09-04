@@ -45,12 +45,14 @@ class AlbumCollection : androidx.loader.app.LoaderManager.LoaderCallbacks<Cursor
     }
 
     override fun onLoaderReset(loader: androidx.loader.content.Loader<Cursor>) {
+        println("onLoaderReset")
         mCallbacks?.onAlbumReset()
     }
 
     fun onCreate(activity: androidx.fragment.app.FragmentActivity, callbacks: AlbumCallbacks) {
         mContext = WeakReference(activity)
-        mLoaderManager = activity.supportLoaderManager
+        mLoaderManager = LoaderManager.getInstance(activity)
+//        mLoaderManager = activity.supportLoaderManager
         mCallbacks = callbacks
     }
 

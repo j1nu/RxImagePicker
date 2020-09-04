@@ -146,6 +146,7 @@ class ZhihuImagePickerFragment : androidx.fragment.app.Fragment(), IGalleryCusto
     }
 
     override fun onAlbumReset() {
+        println("너였구나 onAlbumReset")
         mAlbumsAdapter.swapCursor(null)
     }
 

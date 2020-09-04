@@ -31,6 +31,7 @@ class AlbumMediaCollection : androidx.loader.app.LoaderManager.LoaderCallbacks<C
     private var mCallbacks: AlbumMediaCallbacks? = null
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
+        println("AlbumMediaCollection in onCreateLoader")
         val context = mContext!!.get()
         val album = requireNotNull(args!!.getParcelable<Album>(ARGS_ALBUM))
 
@@ -51,6 +52,7 @@ class AlbumMediaCollection : androidx.loader.app.LoaderManager.LoaderCallbacks<C
     }
 
     fun onCreate(context: androidx.fragment.app.FragmentActivity, callbacks: AlbumMediaCallbacks) {
+        println("albummediacollecition in oncreate")
         mContext = WeakReference(context)
         mLoaderManager = LoaderManager.getInstance(context)
 //        mLoaderManager = context.supportLoaderManager

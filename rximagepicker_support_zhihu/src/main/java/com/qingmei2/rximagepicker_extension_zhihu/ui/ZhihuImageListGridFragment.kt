@@ -106,6 +106,7 @@ class ZhihuImageListGridFragment : Fragment(), AlbumMediaAdapter.CheckStateListe
 
         mAlbumMediaCollection.onCreate(activity!!, this)
         mAlbumMediaCollection.load(album, selectionSpec.capture)
+        println("listgridfragment ${album}")
     }
 
     override fun onDestroyView() {
@@ -132,10 +133,13 @@ class ZhihuImageListGridFragment : Fragment(), AlbumMediaAdapter.CheckStateListe
     }
 
     override fun onAlbumMediaLoad(cursor: Cursor) {
+        println("onalbummdediaload in listgridfargment")
         mAdapter.swapCursor(cursor)
     }
 
     override fun onAlbumMediaReset() {
+        println("onAlbumMediaReset in listgridfargment")
+
         mAdapter.swapCursor(null)
     }
 

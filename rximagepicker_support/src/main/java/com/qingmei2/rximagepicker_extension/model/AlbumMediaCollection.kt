@@ -38,6 +38,8 @@ class AlbumMediaCollection : androidx.loader.app.LoaderManager.LoaderCallbacks<C
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor) {
+        println("onloadfinished")
+        println(data)
         mContext?.get() ?: return
         mCallbacks?.onAlbumMediaLoad(data)
     }
@@ -60,6 +62,7 @@ class AlbumMediaCollection : androidx.loader.app.LoaderManager.LoaderCallbacks<C
 
     @JvmOverloads
     fun load(target: Album?, enableCapture: Boolean = false) {
+        println("albummediacollection load")
         val args = Bundle()
         args.putParcelable(ARGS_ALBUM, target)
         args.putBoolean(ARGS_ENABLE_CAPTURE, enableCapture)

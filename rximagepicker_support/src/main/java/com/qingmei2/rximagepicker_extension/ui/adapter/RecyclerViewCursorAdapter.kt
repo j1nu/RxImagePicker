@@ -75,16 +75,21 @@ abstract class RecyclerViewCursorAdapter<VH : RecyclerView.ViewHolder> internal 
     }
 
     fun swapCursor(newCursor: Cursor?) {
+        println("swapcurosr")
+        println("$newCursor -> $cursor")
         if (newCursor === cursor) {
             return
         }
 
         if (newCursor != null) {
+            println("여기다")
             cursor = newCursor
             mRowIDColumn = cursor!!.getColumnIndexOrThrow(MediaStore.Files.FileColumns._ID)
+            println(mRowIDColumn)
             // notify the observers about the new cursor
             notifyDataSetChanged()
         } else {
+            println("여기가 아닌가???")
             notifyItemRangeRemoved(0, itemCount)
             cursor = null
             mRowIDColumn = -1

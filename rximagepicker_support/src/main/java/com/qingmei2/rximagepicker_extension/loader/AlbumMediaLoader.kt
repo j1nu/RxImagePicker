@@ -35,12 +35,17 @@ import com.qingmei2.rximagepicker_extension.utils.MediaStoreCompat
 class AlbumMediaLoader private constructor(context: Context, selection: String, selectionArgs: Array<String>, private val mEnableCapture: Boolean) : androidx.loader.content.CursorLoader(context, QUERY_URI, PROJECTION, selection, selectionArgs, ORDER_BY) {
 
     override fun loadInBackground(): Cursor? {
+        println("loadinbackground")
         val result = super.loadInBackground()
         if (!mEnableCapture || !MediaStoreCompat.hasCameraFeature(context)) {
+            println("return result")
+            println(result)
             return result
         }
         val dummy = MatrixCursor(PROJECTION)
         dummy.addRow(arrayOf(Item.ITEM_ID_CAPTURE, Item.ITEM_DISPLAY_NAME_CAPTURE, "", 0, 0))
+        println("dummy")
+        println(dummy)
         return MergeCursor(arrayOf(dummy, result!!))
     }
 
@@ -106,6 +111,8 @@ class AlbumMediaLoader private constructor(context: Context, selection: String, 
             val selectionArgs: Array<String>
             val enableCapture: Boolean
 
+            println("asdfadsfasdfasdffasfds")
+
             if (album.isAll) {
                 when {
                     SelectionSpec.instance!!.onlyShowImages() -> {
@@ -141,6 +148,7 @@ class AlbumMediaLoader private constructor(context: Context, selection: String, 
                 }
                 enableCapture = false
             }
+            println("call albumedialoader!!")
             return AlbumMediaLoader(context!!, selection, selectionArgs, enableCapture)
         }
     }

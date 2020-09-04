@@ -39,6 +39,8 @@ class AlbumCollection : androidx.loader.app.LoaderManager.LoaderCallbacks<Cursor
     }
 
     override fun onLoadFinished(loader: androidx.loader.content.Loader<Cursor>, data: Cursor) {
+        println("onloadfiniished in albumcolletion")
+        println(data)
         mCallbacks?.onAlbumLoad(data)
     }
 
@@ -70,6 +72,7 @@ class AlbumCollection : androidx.loader.app.LoaderManager.LoaderCallbacks<Cursor
     }
 
     fun loadAlbums() {
+        println("loadalbums")
         mLoaderManager.initLoader(LOADER_ID, null, this)
     }
 

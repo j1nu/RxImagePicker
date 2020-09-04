@@ -151,7 +151,9 @@ class ZhihuImagePickerFragment : androidx.fragment.app.Fragment(), IGalleryCusto
     override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
         mAlbumCollection.setStateCurrentSelection(position)
         mAlbumsAdapter.cursor.moveToPosition(position)
+        println("album selected $position")
         val album = Album.valueOf(mAlbumsAdapter.cursor)
+        println(album)
         if (album.isAll) {
             album.addCaptureCount()
         }
@@ -180,10 +182,14 @@ class ZhihuImagePickerFragment : androidx.fragment.app.Fragment(), IGalleryCusto
     }
 
     private fun onAlbumSelected(album: Album) {
+        println("여기 찐 앨범 선택")
+        println(album.count)
+        println(album.id)
         if (album.isAll && album.isEmpty) {
             mContainer.visibility = View.GONE
             mEmptyView.visibility = View.VISIBLE
         } else {
+            println("엠티는 아니고")
             mContainer.visibility = View.VISIBLE
             mEmptyView.visibility = View.GONE
             instanceGridFragmentAndInject(album)
@@ -191,8 +197,11 @@ class ZhihuImagePickerFragment : androidx.fragment.app.Fragment(), IGalleryCusto
     }
 
     private fun instanceGridFragmentAndInject(album: Album?) {
+        println("새 앨범 instance 생성!!!!")
         val tag = ZhihuImageListGridFragment::class.java.simpleName
         if (album != null) {
+            println("test")
+            println(album)
             val fragment = ZhihuImageListGridFragment.instance(album)
             fragment.injectDependencies(this, this, this)
             childFragmentManager
@@ -200,6 +209,8 @@ class ZhihuImagePickerFragment : androidx.fragment.app.Fragment(), IGalleryCusto
                     .replace(R.id.container, fragment, tag)
                     .commitAllowingStateLoss()
         } else {
+            println("ascassaasac")
+
             val fragment = childFragmentManager.findFragmentByTag(tag) as? ZhihuImageListGridFragment
             fragment?.injectDependencies(this, this, this)
         }

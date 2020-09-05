@@ -110,6 +110,7 @@ class ZhihuImageListGridFragment : Fragment(), AlbumMediaAdapter.CheckStateListe
     }
 
     override fun onDestroyView() {
+        println("!!!!!!1 destroy in listgridFragment")
         super.onDestroyView()
         mAlbumMediaCollection.onDestroy()
     }

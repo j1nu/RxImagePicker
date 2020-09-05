@@ -210,7 +210,7 @@ class ZhihuImagePickerFragment : androidx.fragment.app.Fragment(), IGalleryCusto
             childFragmentManager
                     .beginTransaction()
                     .replace(R.id.container, fragment, tag)
-                    .commit()
+                    .commitNow()
 //                    .commitAllowingStateLoss()
         } else {
             println("ascassaasac")
@@ -221,6 +221,7 @@ class ZhihuImagePickerFragment : androidx.fragment.app.Fragment(), IGalleryCusto
     }
 
     override fun onDestroyView() {
+        println("### destoryview in pickerFragment")
         super.onDestroyView()
         mAlbumCollection.onDestroy()
     }

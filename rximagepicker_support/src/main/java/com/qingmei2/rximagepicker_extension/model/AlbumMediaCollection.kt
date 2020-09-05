@@ -66,6 +66,7 @@ class AlbumMediaCollection : androidx.loader.app.LoaderManager.LoaderCallbacks<C
     }
 
     fun onDestroy() {
+        println("@@@@ destroy in AlbumMediaCollection")
         mLoaderManager?.destroyLoader(LOADER_ID)
         mCallbacks = null
     }

@@ -45,7 +45,7 @@ class AlbumCollection : androidx.loader.app.LoaderManager.LoaderCallbacks<Cursor
     }
 
     override fun onLoaderReset(loader: androidx.loader.content.Loader<Cursor>) {
-        println("onLoaderReset")
+        println("onLoaderReset in AlbumCollection")
         mCallbacks?.onAlbumReset()
     }
 
@@ -69,6 +69,7 @@ class AlbumCollection : androidx.loader.app.LoaderManager.LoaderCallbacks<Cursor
     }
 
     fun onDestroy() {
+        println("@@@@ destroy")
         mLoaderManager.destroyLoader(LOADER_ID)
         mCallbacks = null
     }

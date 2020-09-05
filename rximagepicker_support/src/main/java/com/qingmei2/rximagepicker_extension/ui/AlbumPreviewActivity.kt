@@ -43,7 +43,7 @@ open class AlbumPreviewActivity : BasePreviewActivity(), AlbumMediaCollection.Al
         val album = intent.getParcelableExtra<Album>(EXTRA_ALBUM)
         mCollection.load(album)
 
-        val item = intent.getParcelableExtra<Item>(EXTRA_ITEM)
+        val item = intent.getParcelableExtra<Item>(EXTRA_ITEM)!!
         if (mSpec.countable) {
             mCheckView.setCheckedNum(mSelectedCollection.checkedNumOf(item))
         } else {

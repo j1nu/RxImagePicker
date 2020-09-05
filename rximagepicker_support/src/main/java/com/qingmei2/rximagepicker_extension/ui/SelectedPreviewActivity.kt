@@ -25,7 +25,7 @@ open class SelectedPreviewActivity : BasePreviewActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val bundle = intent.getBundleExtra(BasePreviewActivity.EXTRA_DEFAULT_BUNDLE)
+        val bundle = intent.getBundleExtra(BasePreviewActivity.EXTRA_DEFAULT_BUNDLE)!!
         val selected =
                 bundle.getParcelableArrayList<Item>(SelectedItemCollection.STATE_SELECTION)
         mAdapter.addAll(requireNotNull(selected))

@@ -34,7 +34,7 @@ class CustomPreviewActivity : AppCompatActivity(), ViewPager.OnPageChangeListene
         if (SelectionSpec.instance.needOrientationRestriction()) {
             requestedOrientation = SelectionSpec.instance.orientation
         }
-        val data = intent.getParcelableArrayListExtra<BaseItem>(PREVIEW_DATA)
+        val data = intent.getParcelableArrayListExtra<BaseItem>(PREVIEW_DATA)!!
         mAdapter.addAll(data.toList())
         pager.adapter = mAdapter
         pager.addOnPageChangeListener(this)

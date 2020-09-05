@@ -35,6 +35,8 @@ class AlbumMediaCollection : androidx.loader.app.LoaderManager.LoaderCallbacks<C
         val context = mContext!!.get()
         val album = requireNotNull(args!!.getParcelable<Album>(ARGS_ALBUM))
 
+        println("mContext.get = $context")
+
         return AlbumMediaLoader.newInstance(context, album,
                 album.isAll && args.getBoolean(ARGS_ENABLE_CAPTURE, false))
     }
@@ -47,6 +49,10 @@ class AlbumMediaCollection : androidx.loader.app.LoaderManager.LoaderCallbacks<C
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
+        println("onLoaderReset")
+        println("loader = $loader")
+        println("mcontext = $mContext")
+        println("mcontext.get = ${mContext?.get()}")
         mContext?.get() ?: return
         mCallbacks?.onAlbumMediaReset()
     }

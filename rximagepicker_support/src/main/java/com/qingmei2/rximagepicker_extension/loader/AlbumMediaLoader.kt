@@ -36,6 +36,7 @@ class AlbumMediaLoader private constructor(context: Context, selection: String, 
 
     override fun loadInBackground(): Cursor? {
         println("loadinbackground")
+        println("context = $context")
         val result = super.loadInBackground()
         if (!mEnableCapture || !MediaStoreCompat.hasCameraFeature(context)) {
             println("return result")
@@ -106,6 +107,10 @@ class AlbumMediaLoader private constructor(context: Context, selection: String, 
 
         fun newInstance(context: Context?, album: Album, capture: Boolean): androidx.loader.content.CursorLoader {
             context?:NullPointerException("Context can't be null!")
+            if (context == null) {
+                println("newinstance in albumMedeiaLoader")
+                println("context = null")
+            }
 
             val selection: String
             val selectionArgs: Array<String>

@@ -210,7 +210,8 @@ class ZhihuImagePickerFragment : androidx.fragment.app.Fragment(), IGalleryCusto
             childFragmentManager
                     .beginTransaction()
                     .replace(R.id.container, fragment, tag)
-                    .commitNow()
+                    .commitNowAllowingStateLoss()
+//                    .commitNow()
 //                    .commitAllowingStateLoss()
         } else {
             println("ascassaasac")
